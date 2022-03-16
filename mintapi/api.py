@@ -192,21 +192,30 @@ class Mint(object):
         return self.driver.request("GET", url, **kwargs)
 
     def post(self, url, **kwargs):
-        return self.driver.request('POST', url, **kwargs)
+        return self.driver.request("POST", url, **kwargs)
 
     def patch(self, url, **kwargs):
-        return self.driver.request('PATCH', url, **kwargs)
+        return self.driver.request("PATCH", url, **kwargs)
 
-    def login_and_get_token(self, email, password, mfa_method=None, mfa_token=None,
-                            mfa_input_callback=None, intuit_account=None, headless=False,
-                            session_path=None, imap_account=None,
-                            imap_password=None,
-                            imap_server=None,
-                            imap_folder=None,
-                            wait_for_sync=True,
-                            wait_for_sync_timeout=5 * 60,
-                            use_chromedriver_on_path=False,
-                            chromedriver_download_path=os.getcwd()):
+    def login_and_get_token(
+        self,
+        email,
+        password,
+        mfa_method=None,
+        mfa_token=None,
+        mfa_input_callback=None,
+        intuit_account=None,
+        headless=False,
+        session_path=None,
+        imap_account=None,
+        imap_password=None,
+        imap_server=None,
+        imap_folder=None,
+        wait_for_sync=True,
+        wait_for_sync_timeout=5 * 60,
+        use_chromedriver_on_path=False,
+        chromedriver_download_path=os.getcwd(),
+    ):
         if self.token and self.driver:
             return
 
@@ -288,9 +297,9 @@ class Mint(object):
 
     def get_providers(self):
         return self.get(
-            '{}/mas/v1/providers'.format(MINT_ROOT_URL),
-            headers=self._get_api_key_header()
-        ).json()['providers']
+            "{}/mas/v1/providers".format(MINT_ROOT_URL),
+            headers=self._get_api_key_header(),
+        ).json()["providers"]
 
     def get_invests_json(self):
         warnings.warn(
